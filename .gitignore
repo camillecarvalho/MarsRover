@@ -7,6 +7,19 @@
 # BlueJ files
 *.ctxt
 
+# Eclipse files
+.project
+.classpath
+.factorypath
+.faces-config.xml.jsfdia
+.settings/
+.metadata/
+bin/
+
+# Gradle files
+.gradle/
+build/
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
