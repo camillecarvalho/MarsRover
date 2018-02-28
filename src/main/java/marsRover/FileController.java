@@ -1,15 +1,15 @@
 package marsRover;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 public class FileController implements FileListener{
 
-	public String readFirstLine() {
-		return "";
-	}
-
 	@Override
-	public String readSecondLine() {
-		// TODO Auto-generated method stub
-		return null;
+	public BufferedReader readFile(String inputFileName) throws FileNotFoundException {
+		BufferedReader inputData = new BufferedReader(new FileReader(inputFileName));
+		return inputData;
 	}
 
 }

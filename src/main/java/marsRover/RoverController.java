@@ -1,24 +1,30 @@
 package marsRover;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class RoverController {
 
 	private FileListener fileListener;
+	private MarsRoverData marsRoverData;
 	
 	
 	public RoverController(FileListener fileListener) {
 		this.fileListener = fileListener;
 	}
 	
+	public void extractMarsRoverDataFromInput(String inputFileName) throws Exception {
+		 BufferedReader inputData = fileListener.readFile(inputFileName);
+		 marsRoverData = new MarsRoverData(inputData);
+	}
+	
 	public Point getPlateauUpperRightCoordinates() {
-		String firstLine = fileListener.readFirstLine();
-		
-		return new Point(Character.getNumericValue(firstLine.charAt(0)), Character.getNumericValue(firstLine.charAt(2)));
+		return marsRoverData.getUpperRightCoordinates();
 	}
 
 	public RoverPosition getRoverPosition() {
-		String secondLine = fileListener.readSecondLine();
-		
-		return new RoverPosition(Character.getNumericValue(secondLine.charAt(0)), Character.getNumericValue(secondLine.charAt(2)), secondLine.charAt(4));
+		return marsRoverData.getRoverPosition();
 	}
 	
 	
