@@ -4,6 +4,7 @@ import org.junit.Test;
 import marsRover.FileListener;
 import marsRover.Point;
 import marsRover.RoverController;
+import marsRover.RoverPosition;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,16 +24,31 @@ public class MarsRoverEndToEnd {
 	@Test
 	public void readUpperRightPlateouCoordinates() {
 		
-		context.checking(new Expectations() {{
-            
+		context.checking(new Expectations() {{            
             atLeast(1).of(fileListener).readFirstLine(); will(returnValue("5 5"));
         }});
 		
 		Point upperRightPlateouCoordinates = roverController.getPlateauUpperRightCoordinates();
 		
-		assertEquals(new Point(5,5).getX(), upperRightPlateouCoordinates.getX());
-		assertEquals(new Point(5,5).getY(), upperRightPlateouCoordinates.getY());
+		assertEquals(5, upperRightPlateouCoordinates.getX());
+		assertEquals(5, upperRightPlateouCoordinates.getY());
 	}
+	
+	@Test
+	public void readRoverPosition() {
+		
+		context.checking(new Expectations() {{            
+            atLeast(1).of(fileListener).readSecondLine(); will(returnValue("0 1 N"));
+        }});
+		
+		RoverPosition roverPosition = roverController.getRoverPosition();
+		
+		assertEquals(0, roverPosition.getX());
+		assertEquals(1, roverPosition.getY());
+		assertEquals('N', roverPosition.getDirection());
+	}
+	
+	
 	
 	
 }
