@@ -78,7 +78,7 @@ public class MarsRoverEndToEnd {
 	}
 
 	@Test
-	public void roverCanMoveForwardToNorth() throws Exception {
+	public void roverCanMoveForward() throws Exception {
 
 		String inputFileContent = String.join("\n"
 				, "5 5"
@@ -102,6 +102,34 @@ public class MarsRoverEndToEnd {
 		assertEquals(0, roverPosition.getX());
 		assertEquals(2, roverPosition.getY());
 		assertEquals(Direction.NORTH, roverPosition.getDirection());
+
+	}
+	
+	@Test
+	public void roverCanTurnDirectionToRight() throws Exception {
+
+		String inputFileContent = String.join("\n"
+				, "5 5"
+				, "0 1 N"
+				, "R");
+
+		InputStream inputStreamFileContent = new ByteArrayInputStream(inputFileContent.getBytes());
+
+		inputData = new BufferedReader(new InputStreamReader(inputStreamFileContent));
+
+		context.checking(new Expectations() {{            
+			atLeast(1).of(fileListener).readFile(inputFileName); will(returnValue(inputData));
+		}});
+
+		roverController.extractMarsRoverDataFromInput(inputFileName);
+
+		roverController.performMoviment();
+
+		RoverPosition roverPosition = roverController.getRoverPosition();
+
+		assertEquals(0, roverPosition.getX());
+		assertEquals(1, roverPosition.getY());
+		assertEquals(Direction.WEST, roverPosition.getDirection());
 
 	}
 	

@@ -35,23 +35,5 @@ public class RoverController {
 		}
 		
 	}
-	
-	private class RoverMoviment{
-		
-		public void move(RoverPosition roverPosition, char command) {
-			if (commandForMoveForward(command))
-				moveAccordingToRoverDirection(roverPosition);				
-		}
-		
-		private Boolean commandForMoveForward(char command) {
-			return command == 'M';
-		}
-		
-		private void moveAccordingToRoverDirection(RoverPosition roverPosition) {
-			roverPosition.moveX(roverPosition.getDirection().changeInXWhenMove);
-			roverPosition.moveY(roverPosition.getDirection().changeInYWhenMove);
-		}
-		
-	}
 
 }

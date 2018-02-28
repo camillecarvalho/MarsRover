@@ -5,11 +5,11 @@ public enum Direction {
 	SOUTH ('S', 0, -1),
 	EAST ('E', 1, 0),
 	WEST ('W', -1, 0);
-	
+
 	public final char correspondingCharacter;
 	public final int changeInXWhenMove;
 	public final int changeInYWhenMove;
-	
+
 	Direction(char correspondingCharacter, int x, int y){
 		this.correspondingCharacter = correspondingCharacter;
 		this.changeInXWhenMove = x;
@@ -26,5 +26,12 @@ public enum Direction {
 
 	public int getY() {
 		return changeInYWhenMove;
+	}
+
+	public static Direction getDirection(char correspondingCharacter) {
+		for (Direction direction : Direction.values()) {
+			if (direction.correspondingCharacter == correspondingCharacter) return direction;
+		}
+		return null;
 	}
 }
