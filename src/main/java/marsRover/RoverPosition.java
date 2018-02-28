@@ -2,19 +2,29 @@ package marsRover;
 
 public class RoverPosition extends Point {
 
-	private char direction;
+	private Direction direction;
 	
 	public RoverPosition(int x, int y, char direction) {
 		super(x, y);
 		this.setDirection(direction);
 	}
 
-	public char getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 
 	public void setDirection(char direction) {
-		this.direction = direction;
+		if (direction == Direction.NORTH.getCorrespondingCharacter())
+			this.direction = Direction.NORTH;
+			
+	}
+	
+	public void moveX(int valueToMove) {
+		x += valueToMove;
+	}
+	
+	public void moveY(int valueToMove) {
+		y += valueToMove;
 	}
 
 }

@@ -7,6 +7,7 @@ public class MarsRoverData {
 
 	private Point upperRightCoordinates;
 	private RoverPosition roverPosition;
+	private String roverMovimentCommands;
 
 	public MarsRoverData(BufferedReader inputData) throws IOException {
 		extractMarsRoverDataFromInput (inputData);
@@ -19,10 +20,20 @@ public class MarsRoverData {
 	public RoverPosition getRoverPosition() {
 		return roverPosition;
 	}
+	
+	public String getRoverMovimentCommads() {
+		return roverMovimentCommands;
+	}
 
 	private void extractMarsRoverDataFromInput (BufferedReader inputData) throws IOException {
 		upperRightCoordinates = getUpperRightCoordinates(inputData.readLine());
-		roverPosition = getRoverPosition(inputData.readLine());
+		String line;
+		while ((line = inputData.readLine()) != null) {
+			roverPosition = getRoverPosition(line);
+			String roverMovimentLine = inputData.readLine();
+			if (roverMovimentLine != null)
+				roverMovimentCommands = roverMovimentLine;
+		}
 	}
 
 	private Point getUpperRightCoordinates (String upperRightCoodinates) {
