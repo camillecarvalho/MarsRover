@@ -27,7 +27,7 @@ public class RoverController {
 	}
 
 	public void performMoviment() {
-		RoverMoviment roverMoviment = new RoverMoviment();
+		RoverMovement roverMoviment = new RoverMovement();
 		
 		for (char command: marsRoverData.getRoverMovimentCommads().toCharArray()) {
 			roverMoviment.move(marsRoverData.getRoverPosition(), command);

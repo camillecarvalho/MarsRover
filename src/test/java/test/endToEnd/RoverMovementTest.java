@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
 
 import marsRover.Direction;
-import marsRover.RoverMoviment;
+import marsRover.RoverMovement;
 import marsRover.RoverPosition;
 
-public class RoverMovimentTest {
+public class RoverMovementTest {
 
-	RoverMoviment roverMoviment = new RoverMoviment();
+	RoverMovement roverMoviment = new RoverMovement();
 	
 	@Test
 	public void canMoveToNorth() {

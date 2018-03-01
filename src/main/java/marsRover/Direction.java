@@ -30,7 +30,8 @@ public enum Direction {
 
 	public static Direction getDirection(char correspondingCharacter) {
 		for (Direction direction : Direction.values()) {
-			if (direction.correspondingCharacter == correspondingCharacter) return direction;
+			if (direction.correspondingCharacter == correspondingCharacter) 
+				return direction;
 		}
 		return null;
 	}
