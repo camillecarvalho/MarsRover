@@ -1,6 +1,6 @@
-package test.endToEnd;
+package test.marsRover;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -64,12 +64,12 @@ public class RoverMovementTest {
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
-		assertEquals(Direction.WEST, roverPosition.getDirection());
+		assertEquals(Direction.EAST, roverPosition.getDirection());
 	}
 	
 	@Test
 	public void canTurnRightFromEast() {
-		RoverPosition roverPosition = new RoverPosition(2, 2, 'W');
+		RoverPosition roverPosition = new RoverPosition(2, 2, 'E');
 		
 		roverMoviment.move(roverPosition, 'R');
 		
@@ -86,14 +86,58 @@ public class RoverMovementTest {
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
-		assertEquals(Direction.EAST, roverPosition.getDirection());
+		assertEquals(Direction.WEST, roverPosition.getDirection());
 	}
 	
 	@Test
 	public void canTurnRightFromWest() {
-		RoverPosition roverPosition = new RoverPosition(2, 2, 'E');
+		RoverPosition roverPosition = new RoverPosition(2, 2, 'W');
 		
 		roverMoviment.move(roverPosition, 'R');
+		
+		assertEquals(roverPosition.getX(), 2);
+		assertEquals(roverPosition.getY(), 2);
+		assertEquals(Direction.NORTH, roverPosition.getDirection());
+	}
+	
+	@Test
+	public void canTurnLeftFromNorth() {
+		RoverPosition roverPosition = new RoverPosition(2, 2, 'N');
+		
+		roverMoviment.move(roverPosition, 'L');
+		
+		assertEquals(roverPosition.getX(), 2);
+		assertEquals(roverPosition.getY(), 2);
+		assertEquals(Direction.WEST, roverPosition.getDirection());
+	}
+	
+	@Test
+	public void canTurnLeftFromWest() {
+		RoverPosition roverPosition = new RoverPosition(2, 2, 'W');
+		
+		roverMoviment.move(roverPosition, 'L');
+		
+		assertEquals(roverPosition.getX(), 2);
+		assertEquals(roverPosition.getY(), 2);
+		assertEquals(Direction.SOUTH, roverPosition.getDirection());
+	}
+	
+	@Test
+	public void canTurnLeftFromSouth() {
+		RoverPosition roverPosition = new RoverPosition(2, 2, 'S');
+		
+		roverMoviment.move(roverPosition, 'L');
+		
+		assertEquals(roverPosition.getX(), 2);
+		assertEquals(roverPosition.getY(), 2);
+		assertEquals(Direction.EAST, roverPosition.getDirection());
+	}
+	
+	@Test
+	public void canTurnLeftFromEast() {
+		RoverPosition roverPosition = new RoverPosition(2, 2, 'E');
+		
+		roverMoviment.move(roverPosition, 'L');
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);

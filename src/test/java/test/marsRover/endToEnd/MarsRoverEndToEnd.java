@@ -1,4 +1,4 @@
-package test.endToEnd;
+package test.marsRover.endToEnd;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +16,7 @@ import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import org.hamcrest.Matcher;
 import org.jmock.Expectations;
@@ -160,6 +161,69 @@ public class MarsRoverEndToEnd {
 		assertEquals(Direction.EAST, roverPosition.getDirection());
 
 	}
+	
+	@Test
+	public void roverCanMakeMultipleMovement() throws Exception {
+
+		String inputFileContent = String.join("\n"
+				, "5 5"
+				, "3 3 E"
+				, "MMRMMRMRRM");
+
+		InputStream inputStreamFileContent = new ByteArrayInputStream(inputFileContent.getBytes());
+
+		inputData = new BufferedReader(new InputStreamReader(inputStreamFileContent));
+
+		context.checking(new Expectations() {{            
+			atLeast(1).of(fileListener).readFile(inputFileName); will(returnValue(inputData));
+		}});
+
+		roverController.extractMarsRoverDataFromInput(inputFileName);
+
+		roverController.performMoviment();
+
+		RoverPosition roverPosition = roverController.getRoverPosition();
+
+		assertEquals(5, roverPosition.getX());
+		assertEquals(1, roverPosition.getY());
+		assertEquals(Direction.EAST, roverPosition.getDirection());
+
+	}
+	
+	
+	@Test
+	public void multiplesRoversCanMove() throws Exception {
+
+		String inputFileContent = String.join("\n"
+				, "5 5"
+				, "1 2 N"
+				, "LMLMLMLMM"
+				, "3 3 E"
+				, "MMRMMRMRRM");
+
+		InputStream inputStreamFileContent = new ByteArrayInputStream(inputFileContent.getBytes());
+
+		inputData = new BufferedReader(new InputStreamReader(inputStreamFileContent));
+
+		context.checking(new Expectations() {{            
+			atLeast(1).of(fileListener).readFile(inputFileName); will(returnValue(inputData));
+		}});
+
+		roverController.extractMarsRoverDataFromInput(inputFileName);
+
+		roverController.performMoviment();
+
+		List<RoverPosition> roversPosition = roverController.getRoversPosition();
+
+		assertEquals(5, roversPosition.get(0).getX());
+		assertEquals(1, roversPosition.get(0).getY());
+		assertEquals(Direction.EAST, roversPosition.get(0).getDirection());
+		assertEquals(5, roversPosition.get(1).getX());
+		assertEquals(1, roversPosition.get(1).getY());
+		assertEquals(Direction.EAST, roversPosition.get(1).getDirection());
+
+	}
+	
 	
 
 }

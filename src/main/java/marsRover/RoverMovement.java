@@ -1,7 +1,5 @@
 package marsRover;
 
-import com.sun.xml.internal.ws.encoding.soap.SOAP12Constants;
-
 public class RoverMovement{
 
 	public void move(RoverPosition roverPosition, char command) {
