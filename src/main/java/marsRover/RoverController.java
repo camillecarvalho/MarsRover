@@ -1,7 +1,7 @@
 package marsRover;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.util.List;
 
 public class RoverController {
 
@@ -22,15 +22,15 @@ public class RoverController {
 		return marsRoverData.getUpperRightCoordinates();
 	}
 
-	public RoverPosition getRoverPosition() {
-		return marsRoverData.getRoverPosition();
+	public List<Rover> getRovers() {
+		return marsRoverData.getRovers();
 	}
 
 	public void performMoviment() {
 		RoverMovement roverMoviment = new RoverMovement();
 		
-		for (char command: marsRoverData.getRoverMovimentCommads().toCharArray()) {
-			roverMoviment.move(marsRoverData.getRoverPosition(), command);
+		for (Rover rover: marsRoverData.getRovers()) {
+			roverMoviment.move(rover.getRoverPosition(), rover.getRoverMovimentCommands());
 				
 		}
 		

@@ -16,7 +16,7 @@ public class RoverMovementTest {
 	public void canMoveToNorth() {
 		RoverPosition roverPosition = new RoverPosition(0, 0, 'N');
 		
-		roverMoviment.move(roverPosition, 'M');
+		roverMoviment.move(roverPosition, "M");
 		
 		assertEquals(roverPosition.getX(), 0);
 		assertEquals(roverPosition.getY(), 1);
@@ -27,7 +27,7 @@ public class RoverMovementTest {
 	public void canMoveToSouth() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'S');
 		
-		roverMoviment.move(roverPosition, 'M');
+		roverMoviment.move(roverPosition, "M");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 1);
@@ -38,7 +38,7 @@ public class RoverMovementTest {
 	public void canMoveToEast() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'E');
 		
-		roverMoviment.move(roverPosition, 'M');
+		roverMoviment.move(roverPosition, "M");
 		
 		assertEquals(roverPosition.getX(), 3);
 		assertEquals(roverPosition.getY(), 2);
@@ -49,7 +49,7 @@ public class RoverMovementTest {
 	public void canMoveToWeast() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'W');
 		
-		roverMoviment.move(roverPosition, 'M');
+		roverMoviment.move(roverPosition, "M");
 		
 		assertEquals(roverPosition.getX(), 1);
 		assertEquals(roverPosition.getY(), 2);
@@ -60,7 +60,7 @@ public class RoverMovementTest {
 	public void canTurnRightFromNorth() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'N');
 		
-		roverMoviment.move(roverPosition, 'R');
+		roverMoviment.move(roverPosition, "R");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
@@ -71,7 +71,7 @@ public class RoverMovementTest {
 	public void canTurnRightFromEast() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'E');
 		
-		roverMoviment.move(roverPosition, 'R');
+		roverMoviment.move(roverPosition, "R");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
@@ -82,7 +82,7 @@ public class RoverMovementTest {
 	public void canTurnRightFromSouth() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'S');
 		
-		roverMoviment.move(roverPosition, 'R');
+		roverMoviment.move(roverPosition, "R");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
@@ -93,7 +93,7 @@ public class RoverMovementTest {
 	public void canTurnRightFromWest() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'W');
 		
-		roverMoviment.move(roverPosition, 'R');
+		roverMoviment.move(roverPosition, "R");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
@@ -104,7 +104,7 @@ public class RoverMovementTest {
 	public void canTurnLeftFromNorth() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'N');
 		
-		roverMoviment.move(roverPosition, 'L');
+		roverMoviment.move(roverPosition, "L");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
@@ -115,7 +115,7 @@ public class RoverMovementTest {
 	public void canTurnLeftFromWest() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'W');
 		
-		roverMoviment.move(roverPosition, 'L');
+		roverMoviment.move(roverPosition, "L");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
@@ -126,7 +126,7 @@ public class RoverMovementTest {
 	public void canTurnLeftFromSouth() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'S');
 		
-		roverMoviment.move(roverPosition, 'L');
+		roverMoviment.move(roverPosition, "L");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);
@@ -137,7 +137,7 @@ public class RoverMovementTest {
 	public void canTurnLeftFromEast() {
 		RoverPosition roverPosition = new RoverPosition(2, 2, 'E');
 		
-		roverMoviment.move(roverPosition, 'L');
+		roverMoviment.move(roverPosition, "L");
 		
 		assertEquals(roverPosition.getX(), 2);
 		assertEquals(roverPosition.getY(), 2);

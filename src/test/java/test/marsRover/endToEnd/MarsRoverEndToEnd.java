@@ -6,6 +6,7 @@ import org.junit.Test;
 import marsRover.Direction;
 import marsRover.FileListener;
 import marsRover.Point;
+import marsRover.Rover;
 import marsRover.RoverController;
 import marsRover.RoverPosition;
 
@@ -61,6 +62,8 @@ public class MarsRoverEndToEnd {
 				, "5 5"
 				, "0 1 N");
 
+		System.out.println(inputFileContent);
+		
 		InputStream inputStreamFileContent = new ByteArrayInputStream(inputFileContent.getBytes());
 
 		inputData = new BufferedReader(new InputStreamReader(inputStreamFileContent));
@@ -71,7 +74,7 @@ public class MarsRoverEndToEnd {
 
 		roverController.extractMarsRoverDataFromInput(inputFileName);
 
-		RoverPosition roverPosition = roverController.getRoverPosition();
+		RoverPosition roverPosition = roverController.getRovers().get(0).getRoverPosition();
 
 		assertEquals(0, roverPosition.getX());
 		assertEquals(1, roverPosition.getY());
@@ -98,7 +101,7 @@ public class MarsRoverEndToEnd {
 
 		roverController.performMoviment();
 
-		RoverPosition roverPosition = roverController.getRoverPosition();
+		RoverPosition roverPosition = roverController.getRovers().get(0).getRoverPosition();
 
 		assertEquals(0, roverPosition.getX());
 		assertEquals(2, roverPosition.getY());
@@ -126,7 +129,7 @@ public class MarsRoverEndToEnd {
 
 		roverController.performMoviment();
 
-		RoverPosition roverPosition = roverController.getRoverPosition();
+		RoverPosition roverPosition = roverController.getRovers().get(0).getRoverPosition();
 
 		assertEquals(0, roverPosition.getX());
 		assertEquals(1, roverPosition.getY());
@@ -154,7 +157,7 @@ public class MarsRoverEndToEnd {
 
 		roverController.performMoviment();
 
-		RoverPosition roverPosition = roverController.getRoverPosition();
+		RoverPosition roverPosition = roverController.getRovers().get(0).getRoverPosition();
 
 		assertEquals(0, roverPosition.getX());
 		assertEquals(1, roverPosition.getY());
@@ -182,7 +185,7 @@ public class MarsRoverEndToEnd {
 
 		roverController.performMoviment();
 
-		RoverPosition roverPosition = roverController.getRoverPosition();
+		RoverPosition roverPosition = roverController.getRovers().get(0).getRoverPosition();
 
 		assertEquals(5, roverPosition.getX());
 		assertEquals(1, roverPosition.getY());
@@ -213,14 +216,14 @@ public class MarsRoverEndToEnd {
 
 		roverController.performMoviment();
 
-		List<RoverPosition> roversPosition = roverController.getRoversPosition();
+		List<Rover> rovers = roverController.getRovers();
 
-		assertEquals(5, roversPosition.get(0).getX());
-		assertEquals(1, roversPosition.get(0).getY());
-		assertEquals(Direction.EAST, roversPosition.get(0).getDirection());
-		assertEquals(5, roversPosition.get(1).getX());
-		assertEquals(1, roversPosition.get(1).getY());
-		assertEquals(Direction.EAST, roversPosition.get(1).getDirection());
+		assertEquals(1, rovers.get(0).getRoverPosition().getX());
+		assertEquals(3, rovers.get(0).getRoverPosition().getY());
+		assertEquals(Direction.NORTH, rovers.get(0).getRoverPosition().getDirection());
+		assertEquals(5, rovers.get(1).getRoverPosition().getX());
+		assertEquals(1, rovers.get(1).getRoverPosition().getY());
+		assertEquals(Direction.EAST, rovers.get(1).getRoverPosition().getDirection());
 
 	}
 	
